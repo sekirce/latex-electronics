@@ -1,5 +1,6 @@
 #import "@preview/pergamon:0.5.0": *
 #import "lib.typ": *
+#import "@preview/diverential:0.2.0": *
 
 #show: note.with(
   title: [Notes about Synopsys EDA Tools and gm/Id methodology],
@@ -10,11 +11,15 @@
   version: [1],
 )
 
+//==============================================================================================
+
 #abstract[
   About Custom Compiler of the Synopsys EDA:
 
   I prefer schematic entry features of CC. Probing is more efficient, adding stubs to instances as well, lot of QoL stuff like these dynamic alignment guides, and finally most tool options are not hidden under F3 (as in Virtuoso) and show on the toolbar instead.
 ]
+
+//==============================================================================================
 
 = Synopsys Custom Compiler
 
@@ -25,6 +30,8 @@ Utilities -> Compare Design (compare two schematics)
 Custom Compiler annotates currents and voltages from simulation onto the layout to enable electromigration and voltage-dependent design rule checking during layout creation.
 
 ROP Annotations
+
+
 
 // Here is some math:
 
@@ -45,10 +52,10 @@ Here's a reference to another section: @sec:2.
 
 == Usefull command Line Options
 
-//#list[
 + runlvl 1-6 (1 best performance, 6 best accuracy)
 + rcred 1-3 (0 no reduction, 3 most aggro reduction)
-//]
+
+//==============================================================================================
 
 = Integrated PrimeWave™ Design Environment
 
@@ -63,10 +70,25 @@ Single testbench simulations:
 - Aging and reliability analysis
 - Device checks
 - Physically aware design checks
-    
+
+== Operating Point Analysis
+
 Allow OP Optimization
+ROP - region of operation
+BackAnnottate Operationg Points.
+
+
+== Shortcuts
 
 Annotate DC Operating Point -- Results > Annotate > Advanced
+
+Setup -> Add Model Files
+
+WaveView - shows plots
+
+ctrl+R - run simulation (once)
+
+//==============================================================================================
 
 = PrimeSim™ HSPICE® simulator
 
@@ -86,7 +108,7 @@ as we at Synopsys did not dogfood it and used custom text-based DSLs for all sim
 == Saving the Simulation State
 Session > Save State
 
-OpenAccess
+OpenAccess // how it's saved
 
 == Analyses
 
@@ -97,13 +119,22 @@ Types:
 + ac
 + dc 
 + noise 
-+ lin //difference between lin and ac
-//]
++ fft // fast fourier transformation
++ lin // What's the difference between lin and ac?
++ acmatch //mismatch?
++ dcmatch
++ trannoise
++ stateye //
++ lstb // stb in cadence (loop stability)
 
 // comparison with cadence tools
 
 // = Another Section
 // <sec:2>
+
+//==============================================================================================
+//==============================================================================================
+//==============================================================================================
 
 = gm/Id methodology 
 
@@ -113,7 +144,7 @@ Long channel devices can have operation split into 4 modes subthreshold, linear,
 
 == Subthreshold operation//mode
 
-MOSFET behaves like a BJT (Bipolar Junction Transistor) with a capacitive divider n on the base of the BJT.
+MOSFET behaves like a BJT (Bipolar Junction Transistor) with a capacitive divider on the base of the BJT.
 
 Sub-threshold operation is important for limiting the gain of linear high-gain amplifiers. //How? Maybe low-power and high gain.
 
@@ -155,6 +186,8 @@ K = (W/$alpha$L) $mu$ $C_"ox"$
 
 It affects the coefficient for all operation modes.
 
+//==============================================================================================
+
 == GIDL 
 
 - Gate Induced Drain Leakage //models behaviour, I_D characteristic in weak inversion.
@@ -193,6 +226,93 @@ $
   R_"S1" = 10 Omega
 $
 
+== Small Signal model
+
+When is the linear approximation valid?
+
+$
+  Delta V_"GS" << 2 V_"ov"
+$
+
+Linearity is a better approximation when in strong inversion. // look at the characteristic I_D over V_GS
+
+=== Long channel $g_m$ dependencies 
+
+Equations:
+
+square law:
+
+$
+  I_D = mu_n C_"ox" W/(2L) V_"ov"^2 
+$
+
+$g_m$ derivation:
+
+$
+  g_m = dvp(I_D, V_"gs") = mu_n C_"ox" W/(L) V_"ov" 
+$
+
+$
+  V_"ov" = sqrt(2 I_D/(mu_n C_"ox" W/(L)))
+$
+
+$
+  V_"ov" = sqrt(2 mu_n C_"ox" I_D W/L)
+$
+
+
+Table of dependancies:
+
+#set align(center)
+#table(
+  columns: (auto, auto, auto),
+  inset: 10pt,
+  align: horizon,
+  table.header(
+    [Constant $W$], [Constant $V_"ov"$], [Constant $I_D$],
+  ),
+    $g_m prop V_"ov"$,
+    $g_m prop W$,
+    $g_m prop sqrt(W)$,
+    $g_m prop sqrt(I_D)$,
+    $g_m prop I_D$,
+    $g_m prop 1 \/ V_"ov"$
+)
+
+#set align(left )
+
+=== $C_"dg"$ and $C_"gd"$ are not the same
+
+$C_"dg" = Delta Q_d/ Delta V_g$
+
+$C_"gd" = Delta Q_g/ Delta V_d$
+
+$
+  C_"dg" > C_"gd" 
+$
+
+This makes sense because, voltage change on gate affects the drain more than the drain voltage affects the gate charge.
+
+=== Intrinsic gain $g_m r_o$
+
+$
+  abs(A_v) = g_m r_o
+$
+
+// r_o can be pronounced r_naught which means r nothing like zero
+
+=== Figure of Merit $g_m \/ I_d times f_t$ //It's relatad
+
+Derivation $f_t$
+
+$
+  C_"gg" = C_"gb" + C_"gs" + C_"gd"
+$
+
+$
+  g_m/(2 pi C_"gg") //Is this definition?
+$
+
 == Low phase margin
 
 This can mean noise amplification
@@ -202,6 +322,8 @@ Second order system is faster than first order system. Because 90 deg phase marg
 == Solving problems of headroom for cascode mirror
 
 How to decrease offset.
+
+// Drain induced barrier lowering, How linear is it?
 
 strong inversion -> channel length modulation -> more drain-source voltage -> less effective transistor length -> drain current 
 all regions -> DIBL -> more drain-source voltage -> less threshold voltage -> more overdrive voltage -> more drain current
@@ -240,13 +362,43 @@ effect on
 
 //Try to find some examples for quantitive analsys.
 
+//==============================================================================================
+
+== Designer's way of calculating gain of a amplifier stage
+
+$
+  G_m = I_"out,sc"/v_"in"
+$
+
+$
+  A_v = G_m R_"out"
+$
+
+== How to memorize the direction of drain current small signal source
+
+It always points the same way as the gate-source voltage.
+
+//==============================================================================================
+
+= Submicron technologies problems//listed
+
+These issues encompass the escalation of detrimental effects like 
+
+- Short Channel Effect (SCE), 
+- Gate Induced Drain Leakage (GIDL), 
+- diminished low power performance, 
+- gate direct tunneling leakage, 
+- Drain Induced Barrier Lowering (DIBL), 
+- subthreshold leakage current (Ioff) increase, 
+- and threshold voltage (Vth) shifts. 
+
 == Composite cascode stage
 
 === Composite vs Conventional cascode stage
 
 It doesn't need additional bias voltage like conventional.
 
-What's the downside?
+What's the downside? // How to use native transistor?
 
 == Small signal model for weak inversion
 
@@ -267,6 +419,54 @@ Calculating the safe operating area according to the ambient temperature (or cas
 When the ambient temperature (or case temperature) is $25 degree C$ or more, the allowable loss must be limited so that the junction temperature does not exceed the maximum rating, and the safe operating area becomes narrower.
 
 // How high currents and voltages are at a time?
+
+//==============================================================================================
+//==============================================================================================
+
+= Small-signal stability
+
+
+// from 2001 Striving for small-signal stability
+
+Single-loop theory/multiloop reality is the state-of-the-art of stability analysis [8].
+
+It's still common practice to assess stability from single-loop theory, even though all physical networks in frequency of interest are intrinsically multiloop structures.// Why is this not smart?
+
+Pole-zero analysis is not good for determining stability not only because of the numerical difficulties with large networks.
+
+== Middlebrook's Null Double-Injection Technique
+
+It assumes that signal flows unilaterally.
+
+//Evaluation of true return ratio
+
+
+== Stability Analysis in a 2 loops system
+
+Hi everyone, having some doubt about stability of system with multi loop.
+
+Let's say I have the circuit in figure (the real one is much more complex, I know that one cannot work for various problem) so I need 2 iprobe to do stb analysis in virtuoso. The 2 current are different and also the 2 error amplifier are different so I will get 2 different loop results from virtuoso.
+
+How to combine them?
+
+=== Answers
+
+My recommendation to a colleague who worked on a fast-loop LDO, was to measure the DC Point for both loops first. To analyze the stability, of one loop, replace the OTA with a DC voltage source with the required quiescent point. Measure its stability. Repeat for second loop.
+
+If both loops seem stable, the final takeaway will always be a “large-signal” transient.
+
+// What if one of the loops is unstable.
+
+
+
+
+
+== Common RF Circuit Stability simulations
+
+Designers can verify unconditional stability across a wide range of frequencies by simulating factors like the K-factor and stability circles.
+
+//==============================================================================================
+//==============================================================================================
 
 = Native transistor models
 
@@ -298,6 +498,7 @@ Is it worth? it depends, if you cant get the speed or headroom without then mayb
 
 I haven't found many a great use for native devices. the only application i used them for was to build cascodes without needing an extra bias voltage. 
 
+//==============================================================================================
 
 === from other forum
 
@@ -371,3 +572,21 @@ $
 
 // #add-bib-resource(read("bibliography.bib"))
 // #print-bananote-bibliography()
+// 
+= Agentic AI - training
+
+Has ability to operate autonomously in complex environments, decision-making over content creation and do not require human prompts or continuous oversight.
+
+how budgets are shifting from passive analytics to AI that actually acts
+
+LLM - large language models
+
+P-R-A-L Perceive Reason Act Learn (this is not done by a LLM AIs like chatGPT, it only does the Reason part)
+
+ERP (Enterprise Resource Planning) system is a software that integrates and automates an organization's core business processes, such as finance, HR, manufacturing, and supply chain management, into a single, unified platform with a common database.
+
+*autonomy* to make decisions
+
+capacity to act (*agency*)
+
+defined *authority*
