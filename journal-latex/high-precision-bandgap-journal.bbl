@@ -1,0 +1,280 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{cms/global//global/global/global}
+    \entry{michon_mobile_2017}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=77673c07420474742cdf72e7f9c88472}{%
+           family={Michon},
+           familyi={M\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1badfd642dad955ea19955d5165b2005}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Julius\bibnamedelima Orion},
+           giveni={J\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=718c9057e43580a3053d0a86f519d9af}{%
+           family={Wright},
+           familyi={W\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=261c6e559d7aa93da4862c0a43a30faf}{%
+           family={Chafe},
+           familyi={C\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3f87431ba7261f7b8e9e7b08cb9f18c3}{%
+           family={Granzow},
+           familyi={G\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3798e0c49b710b5e279a3eb38ba1b7fe}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Ge},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9e4ca967fc253aa7704c6555dbeb1631}
+      \strng{fullhash}{900809599c5f4975d2f3fb7877a685bd}
+      \strng{fullhashraw}{900809599c5f4975d2f3fb7877a685bd}
+      \strng{bibnamehash}{900809599c5f4975d2f3fb7877a685bd}
+      \strng{authorbibnamehash}{900809599c5f4975d2f3fb7877a685bd}
+      \strng{authornamehash}{9e4ca967fc253aa7704c6555dbeb1631}
+      \strng{authorfullhash}{900809599c5f4975d2f3fb7877a685bd}
+      \strng{authorfullhashraw}{900809599c5f4975d2f3fb7877a685bd}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Applied Sciences}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{12}
+      \field{shorttitle}{Mobile Music, Sensors, Physical Modeling, and Digital Fabrication}
+      \field{title}{Mobile Music, Sensors, Physical Modeling, and Digital Fabrication: Articulating the Augmented Mobile Instrument}
+      \field{volume}{7}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{pages}{1311}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/app7121311
+      \endverb
+      \keyw{mobile music,musical instrument design,physical modeling}
+    \endentry
+    \entry{schoenberg_theory_2010}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=15672b30228d27126b3b024441a1325c}{%
+           family={Schoenberg},
+           familyi={S\bibinitperiod},
+           given={Arnold},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=d0d342180b2c8b8825c6f9ae64e97227}{%
+           family={Carter},
+           familyi={C\bibinitperiod},
+           given={Roy\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {University of California Press}%
+      }
+      \strng{namehash}{15672b30228d27126b3b024441a1325c}
+      \strng{fullhash}{15672b30228d27126b3b024441a1325c}
+      \strng{fullhashraw}{15672b30228d27126b3b024441a1325c}
+      \strng{bibnamehash}{15672b30228d27126b3b024441a1325c}
+      \strng{authorbibnamehash}{15672b30228d27126b3b024441a1325c}
+      \strng{authornamehash}{15672b30228d27126b3b024441a1325c}
+      \strng{authorfullhash}{15672b30228d27126b3b024441a1325c}
+      \strng{authorfullhashraw}{15672b30228d27126b3b024441a1325c}
+      \strng{translatorbibnamehash}{d0d342180b2c8b8825c6f9ae64e97227}
+      \strng{translatornamehash}{d0d342180b2c8b8825c6f9ae64e97227}
+      \strng{translatorfullhash}{d0d342180b2c8b8825c6f9ae64e97227}
+      \strng{translatorfullhashraw}{d0d342180b2c8b8825c6f9ae64e97227}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{pagetotal}{440}
+      \field{title}{Theory of Harmony}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \keyw{Music / Instruction \& Study / Theory,Music / General,Art / General}
+    \endentry
+    \entry{spiegel_thoughts_2018}{incollection}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c8147caa09f9c2f89c51255e794e451e}{%
+           family={Spiegel},
+           familyi={S\bibinitperiod},
+           given={Laurie},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=da03714b9eb2382e45e92cbc9a7f38a5}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={Roger\bibnamedelima T.},
+           giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=81cfd3b063dfb0f95eecd64f77942012}{%
+           family={{McLean}},
+           familyi={M\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{fullhash}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{fullhashraw}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{bibnamehash}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{authorbibnamehash}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{authornamehash}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{authorfullhash}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{authorfullhashraw}{c8147caa09f9c2f89c51255e794e451e}
+      \strng{editorbibnamehash}{91b53680cdb7159912d07e13681ea8c4}
+      \strng{editornamehash}{91b53680cdb7159912d07e13681ea8c4}
+      \strng{editorfullhash}{91b53680cdb7159912d07e13681ea8c4}
+      \strng{editorfullhashraw}{91b53680cdb7159912d07e13681ea8c4}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{The Oxford Handbook of Algorithmic Music}
+      \field{day}{22}
+      \field{month}{2}
+      \field{title}{Thoughts on Composing with Algorithms}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \field{pages}{105\bibrangedash 111}
+      \range{pages}{7}
+    \endentry
+    \entry{tymoczko_geometry_2011}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4d9bdec1eb547825c43baa6283f80d42}{%
+           family={Tymoczko},
+           familyi={T\bibinitperiod},
+           given={Dmitri},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{4d9bdec1eb547825c43baa6283f80d42}
+      \strng{fullhash}{4d9bdec1eb547825c43baa6283f80d42}
+      \strng{fullhashraw}{4d9bdec1eb547825c43baa6283f80d42}
+      \strng{bibnamehash}{4d9bdec1eb547825c43baa6283f80d42}
+      \strng{authorbibnamehash}{4d9bdec1eb547825c43baa6283f80d42}
+      \strng{authornamehash}{4d9bdec1eb547825c43baa6283f80d42}
+      \strng{authorfullhash}{4d9bdec1eb547825c43baa6283f80d42}
+      \strng{authorfullhashraw}{4d9bdec1eb547825c43baa6283f80d42}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{day}{21}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{pagetotal}{469}
+      \field{shorttitle}{A Geometry of Music}
+      \field{title}{A Geometry of Music: Harmony and Counterpoint in the Extended Common Practice}
+      \field{year}{2011}
+      \field{dateera}{ce}
+      \keyw{Mathematics / Geometry / General,Music / Genres \& Styles / Jazz,Music / History \& Criticism,Music / Instruction \& Study / Composition,Music / Instruction \& Study / Theory}
+    \endentry
+    \entry{wyschnegradsky_manual_2017}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=092139a3e1e261c15a1f9e0dec604502}{%
+           family={Wyschnegradsky},
+           familyi={W\bibinitperiod},
+           given={Ivan},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=b5a17ec93e2e11fe6ab836ac9ad83880}{%
+           family={Kaplan},
+           familyi={K\bibinitperiod},
+           given={Noah},
+           giveni={N\bibinitperiod}}}%
+      }
+      \name{translator}{1}{}{%
+        {{hash=3ab4dc0546f7b1cad0942fcae1672385}{%
+           family={Kaplan},
+           familyi={K\bibinitperiod},
+           given={Rosalie},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Underwolf Editions}%
+      }
+      \strng{namehash}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{fullhash}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{fullhashraw}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{bibnamehash}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{authorbibnamehash}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{authornamehash}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{authorfullhash}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{authorfullhashraw}{092139a3e1e261c15a1f9e0dec604502}
+      \strng{editorbibnamehash}{b5a17ec93e2e11fe6ab836ac9ad83880}
+      \strng{editornamehash}{b5a17ec93e2e11fe6ab836ac9ad83880}
+      \strng{editorfullhash}{b5a17ec93e2e11fe6ab836ac9ad83880}
+      \strng{editorfullhashraw}{b5a17ec93e2e11fe6ab836ac9ad83880}
+      \strng{translatorbibnamehash}{3ab4dc0546f7b1cad0942fcae1672385}
+      \strng{translatornamehash}{3ab4dc0546f7b1cad0942fcae1672385}
+      \strng{translatorfullhash}{3ab4dc0546f7b1cad0942fcae1672385}
+      \strng{translatorfullhashraw}{3ab4dc0546f7b1cad0942fcae1672385}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{pagetotal}{31}
+      \field{title}{Manual of Quarter-tone Harmony}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \keyw{Music / Instruction \& Study / Theory,Music / Instruction \& Study / General}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

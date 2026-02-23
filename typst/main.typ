@@ -31,8 +31,6 @@ Custom Compiler annotates currents and voltages from simulation onto the layout 
 
 ROP Annotations
 
-
-
 // Here is some math:
 
 /*$
@@ -86,7 +84,7 @@ Setup -> Add Model Files
 
 WaveView - shows plots
 
-ctrl+R - run simulation (once)
+ctrl+R - run simulation (once) // ctrl+shift+R
 
 //==============================================================================================
 
@@ -133,6 +131,28 @@ Types:
 // <sec:2>
 
 //==============================================================================================
+= Instructions for Elmos Project ex Portal 
+
+P96102_keyfoundry
+ 
+cdesigner
+ 
+degu folder 
+ 
+13c server
+ 
+13 edf documenting mozilla
+
+Old projects: 
++ P95581
++ P95599
+ 
+
+//==============================================================================================
+
+//==============================================================================================
+// 
+// 
 = SKKey Foundry PDK
 
 BCDN = Bipolar Cmos Dmos Non-volotile memory integration // Non-volatile can be used for codes for testability
@@ -618,12 +638,13 @@ Where gain A is voltage gain.
 // #print-bananote-bibliography()
 // 
 
-= Bandgap ideas
+= Bandgap ideas // need to find and do also requirements and parameters to testbench
 
+Using native NMOS pair instead of regular PMOS pair as a current mirror (headroom, also size issue?)
 
 = Open-Source EDA Tools
 
-Guidelines by
+Guidelines by WHOM?!
 
 == Install prerequisites // things that are required beforehand
 
@@ -752,6 +773,9 @@ defined *authority*
 Hi, I'm an Analog Design Engineer with 7 years of experience in Analog and RF IC design across communication, automotive, and product-driven industries. I'm committed to continuous learning and innovation, always striving to enhance my skills and deliver high-quality solutions. Outside of work, I enjoy swimming and unwinding with movies and TV shows.
 
 Electronics and Semicon Engineer | Analog Design | Serbia
+
+== GetCelebrating
+points
 
 
 
