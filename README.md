@@ -7,3 +7,10 @@ Typst document - Page layout format //Pandoc (universal document converter)
 - Synopsys EDA Tools like Custom Compiler notes
 
 - SOA - Safe Area of Operation
+
+//comment test
+LaTeX Document:
+
+- High-Precision Bangap Journal 
+
+
