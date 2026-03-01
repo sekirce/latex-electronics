@@ -1,0 +1,16 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'high-precision-bandgap-journal.blg'
+[133] biber:340> INFO - === пон мар  2, 2026, 00:26:54
+[186] Biber.pm:419> INFO - Reading 'high-precision-bandgap-journal.bcf'
+[308] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
+[322] Biber.pm:4419> INFO - Processing section 0
+[358] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
+[359] bibtex.pm:1713> INFO - LaTeX decoding ...
+[361] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[425] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'level = 4' with 'level = 2'
+[426] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[426] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[426] Biber.pm:4239> INFO - Sorting list 'cms/global//global/global' of type 'entry' with template 'cms' and locale 'en-US'
+[426] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[451] bbl.pm:660> INFO - Writing 'high-precision-bandgap-journal.bbl' with encoding 'UTF-8'
+[452] bbl.pm:763> INFO - Output to high-precision-bandgap-journal.bbl

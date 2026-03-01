@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
+% \usepackage{inputenc}
 \usepackage{openwork}
-
+% \usepackage{biblatex}
 \title{High Precision Bandgap Reference Voltage}
 \author[]{Aleksandar Vuković}
 % \author[2,3]{Second Author}
@@ -15,34 +16,48 @@
 \maketitle
 
 \begin{abstract}
-    Includes specifications for the block.
+    Includes specifications for the block. Different topologies. 
 
-    % This template is required for scholarly articles and interviews, and it provides formatting guidance for artistic and hybrid submissions. We welcome creative formats and hybrid works that may not conform to these norms; however, we ask that all authors use this file as the basis for submission in order to support consistent technical processing and peer review. If you anticipate major deviations in format or media type, please contact the editorial team with clear suggestions in advance. \\
-\textbf{Keywords:} high precision, trimming 
+    \textbf{Keywords:} high precision, trimming, Kuijk, Brokaw, Tsividis, bandgap, voltage reference
 \end{abstract}
 
-\section{Schematic for calculation} % Mathematical Behaviour :/
+\section{Topoplogy classification}
+
+There are three basic types of Bandgap Voltage References based on \parencite{krolak2022}: 
+
+\begin{itemize}
+    \item Kuijk Bandgap
+    \item Brokaw Bandgap
+    \item Tsividis Bandgap
+\end{itemize}
+
+\subsection{Kuijk Bandgap} % Mathematical Behaviour :/
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Figures/BGRV-Kuijk.pdf}
+	\includegraphics[width=0.55\linewidth]{Figures/BGRV-Kuijk.pdf}
 	\caption{Kuijk Bandgap Reference Voltage}
 	\label{fig:kuijk} % !?
 \end{figure}
 
+This design is based on Kuijk paper from 1972.
+
+
 \begin{equation}\label{eq:id1}
-    I_{D1} = I_{s1} (e^{V_{BE1}/V_T}-1)
+    I_{C1} = I_{s1} (e^{V_{BE1}/V_T}-1)
 \end{equation}
 
 \begin{equation}\label{eq:id2}
-    I_{D2} = I_{s2} (e^{V_{BE2}/V_T}-1)
+    I_{C2} = I_{s2} (e^{V_{BE2}/V_T}-1)
 \end{equation}
 
 Because of scaling $A_E$
 
 \begin{equation}
-    I_{s2} = n * I_{s1}
+    I_{s2} = n \, I_{s1}
 \end{equation}
+
+Saturation current is defined as:
 
 Divide \ref{eq:id1} and \ref{eq:id2}:
 
@@ -57,26 +72,80 @@ Divide \ref{eq:id1} and \ref{eq:id2}:
 This difference is applied on resistor $R_3$.
 
 \begin{equation}
-    \Delta V_{BE} = \dfrac{kT}{q} ln (\dfrac{n I_{D1}}{I_{D2}})
-\end{equation}
-
-\begin{equation}
-    \dfrac{\Delta V_{BE}}{R_3} = \dfrac{V_{BGR} - V_{BE1}}{R_2}
+    \dfrac{\Delta V_{BE}}{R_3} = \dfrac{V_{BGR} - V_{BE1}}{R_2} = \frac{1}{R}\dfrac{kT}{q} ln (\dfrac{n I_{D1}}{I_{D2}})
 \end{equation}
 
 \begin{equation}
     V_{BGR} = V_{BE1} + \Delta V_{BE} \dfrac{R_2}{R_3}
 \end{equation}
 
-% TODO find a equation for I_S
+\newpage
 
-\begin{equation}
-    \alpha = \dfrac{R_2}{R_3}
-\end{equation}
+\section{Brokaw bandgap reference}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Figures/BGRV-Brokaw.pdf}
+	\caption{Brokow Bandgap Reference Voltage}
+	\label{fig:brokaw} % !?
+\end{figure}
+
+Current inputs to OTA expected because of potential NPN $I_b$.
+
+% Dependance on supply voltage?
 
 \section{Errors PTAT or non-PTAT}
 
+\begin{itemize}
+    \item input DC opAmp offset
+    \item $V_{BE}$ diode connected
+\end{itemize}
 
+\newpage % Like and Appendix
+
+\section{PTAT Bias}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.35\linewidth]{Figures/PTAT-bias.pdf}
+	\caption{PTAT Bias} % Proportional to absolute temperature Bias
+	\label{fig:ptat-bias} 
+\end{figure}
+
+Only large signal analysis:
+
+\begin{equation}
+    V_{gs1} = V_{gs2} + R \, I_{D1}
+\end{equation}
+
+\begin{equation}
+    I_{D1} = \mu_n C_{ox} \dfrac{W}{L}(V_{GS} - V_{th})^2
+\end{equation}
+
+Invert the function to $I_D = f(V_{GS})$:
+
+\begin{equation}
+    V_{GS}  = V_{th} + \sqrt{\dfrac{I_{D1}}{\mu_n C_{ox} \frac{W}{L}}}
+\end{equation}
+
+\textit{PMOS} mirror forces $I_{D1} = I_{D2}$:
+
+\begin{align}
+    V_{GS1}  = V_{th} + \sqrt{\dfrac{I_{D1}}{\mu_n C_{ox} \frac{W}{L}}},\\
+    V_{GS2}  = V_{th} + \sqrt{\dfrac{I_{D2}}{\mu_n C_{ox} N \frac{W}{L}}}
+\end{align}
+
+Subtracting the 2 gate-source voltages: % Are threshold voltages the same?
+
+\begin{equation}
+    R \, I_{D1} = V_{GS1} - V_{GS2}  = (1 - \dfrac{1}{\sqrt{N}}) \sqrt{\dfrac{I_{D1}}{\mu_n C_{ox} \frac{W}{L}}}
+\end{equation}
+
+If we square both sides:
+
+\begin{equation}
+    I_{D1} = V_{GS1} - V_{GS2}  = (1 - \dfrac{1}{\sqrt{N}})^2 \dfrac{1}{R^2} \dfrac{1}{\mu_n C_{ox} \frac{W}{L}}
+\end{equation}
 
 
 % If your proposal was accepted and you are submitting your final materials, please submit your work using the Open Journal System (OJS). Click \href{https://orcid.org/signin?client_id=APP-24WVJE2V6007Z3NV&response_type=code&scope=openid&redirect_uri=https:%2F%2Fjournals.library.columbia.edu%2Findex.php%2Fopenwork%2Fopenid%2FdoAuthentication%3Fprovider%3Dorcid}{here} to submit your materials. 
@@ -135,8 +204,7 @@ This difference is applied on resistor $R_3$.
 %     \item Quotations should be set within double inverted commas, and quotations within quotations in single inverted commas. Quotations more than six lines long should start on the next line and should be indented.
 % \end{itemize}
 
-% \subsubsection{Bibliography}
-% Articles must include citations to the appropriate peer-reviewed or preprint publications where applicable. References and in-text citations should follow the Chicago author-date format (cf. The Chicago Manual of Style, 17th edition). Examples include single-author citations of a book \parencite{tymoczko_geometry_2011} or a book chapter \parencite{spiegel_thoughts_2018}, multiple citations at a time \parencite{schoenberg_theory_2010, wyschnegradsky_manual_2017}, and a multiple-author citation of a journal article \parencite{michon_mobile_2017}. The complete bibliography should be included in a section entitled “References” at the end of the article. We strongly recommend using Zotero to manage your bibliography and automatically format the references and in-text citations to follow the Chicago author-date format.
+
 
 % \subsection{Formatting}
 
@@ -228,6 +296,6 @@ This difference is applied on resistor $R_3$.
 %     \item The author grants the Journal the authority to publish the article as an Open Access article distributed under the terms of \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{Creative Commons Attribution, NonCommercial, NoDerivatives license (CC BY-NC-ND).} 
 % \end{itemize}
 
-% \printbibliography
+\printbibliography
 
 \end{document}
