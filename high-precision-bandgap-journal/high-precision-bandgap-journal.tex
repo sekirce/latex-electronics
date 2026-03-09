@@ -1,14 +1,32 @@
-\documentclass[12pt]{article}
-% \usepackage{inputenc}
-\usepackage{openwork}
-% \usepackage{biblatex}
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+\usepackage{hyperref}
+
+\usepackage[T1, T2A]{fontenc} % Output font encoding for international characters
+
+\usepackage{siunitx}
+
+\usepackage{xcolor} % to color the conversation to look better
+
+\usepackage{amsmath}
+
+
 \title{High Precision Bandgap Reference Voltage}
-\author[]{Aleksandar Vuković}
+
+\author{Aleksandar Vuković}
+
 % \author[2,3]{Second Author}
 % \author[2]{Third Author}
 % \affil[1]{First Department, First University, First Country}
 % \affil[2]{Institute Name, Second Country}
 % \affil[3]{Third Department, Third Affiliation, Third Country}
+
 \date{}
 
 \begin{document}
@@ -16,14 +34,14 @@
 \maketitle
 
 \begin{abstract}
-    Includes specifications for the block. Different topologies. 
+    Includes specifications for the block. Different topologies for Bandgap and Opeational Transconductace Amplifier. 
 
-    \textbf{Keywords:} high precision, trimming, Kuijk, Brokaw, Tsividis, bandgap, voltage reference
+    \textbf{Keywords:} high precision, trimming, Kuijk, Brokaw, Tsividis, bandgap, voltage reference, OTA
 \end{abstract}
 
 \section{Topoplogy classification}
 
-There are three basic types of Bandgap Voltage References based on \parencite{krolak2022}: 
+There are three basic types of Bandgap Voltage References based on % \parencite{krolak2022}: 
 
 \begin{itemize}
     \item Kuijk Bandgap
@@ -42,9 +60,8 @@ There are three basic types of Bandgap Voltage References based on \parencite{kr
 
 This design is based on Kuijk paper from 1972.
 
-
 \begin{equation}\label{eq:id1}
-    I_{C1} = I_{s1} (e^{V_{BE1}/V_T}-1)
+    I_{C1} = I_{s1} (e^{V_{BE1}/V_T}-1) \, ; \, V_{BE1} = V_T ln(\frac{I_{C1}}{I_s})
 \end{equation}
 
 \begin{equation}\label{eq:id2}
@@ -59,7 +76,11 @@ Because of scaling $A_E$
 
 Saturation current is defined as:
 
-Divide \ref{eq:id1} and \ref{eq:id2}:
+\begin{equation}
+    I_{sn} = q n_i^2 A_E \dfrac{D_{n,B}}{N_B w'_B}
+\end{equation}
+
+Divide current equations \ref{eq:id1} and \ref{eq:id2}:
 
 \begin{equation}
     n \dfrac{I_{D1}}{I_{D2}} = e^{(V_{BE1} - V_{BE2})/V_T}
@@ -72,16 +93,28 @@ Divide \ref{eq:id1} and \ref{eq:id2}:
 This difference is applied on resistor $R_3$.
 
 \begin{equation}
-    \dfrac{\Delta V_{BE}}{R_3} = \dfrac{V_{BGR} - V_{BE1}}{R_2} = \frac{1}{R}\dfrac{kT}{q} ln (\dfrac{n I_{D1}}{I_{D2}})
+    \dfrac{\Delta V_{BE}}{R_3} = \dfrac{V_{BGR} - V_{BE1}}{R_2} = \frac{1}{R_3}\dfrac{kT}{q} ln (\dfrac{n I_{D1}}{I_{D2}})
 \end{equation}
 
 \begin{equation}
     V_{BGR} = V_{BE1} + \Delta V_{BE} \dfrac{R_2}{R_3}
 \end{equation}
 
-\newpage
+If we approximate that $I_{D1} \approx I_{D2}$ :
 
-\section{Brokaw bandgap reference}
+\begin{equation}
+    V_{BGR} = V_{BE1} +  \dfrac{kT}{q} ln (n) \dfrac{R_2}{R_3}
+\end{equation}
+
+Mathematical equation for $I_{C1}$.
+
+% \subsubsection*{Equality of $I_{c1}$ and $I_{c2}$ }
+\begin{equation}
+    V_{BGR} - V_{BE1} = R_1 I_{C1}
+\end{equation}
+
+
+\subsection{Brokaw bandgap reference}
 
 \begin{figure}[ht!]
 	\centering
@@ -90,7 +123,11 @@ This difference is applied on resistor $R_3$.
 	\label{fig:brokaw} % !?
 \end{figure}
 
+
 Current inputs to OTA expected because of potential NPN $I_b$.
+
+\subsection{Tsividis bandgap reference}
+
 
 % Dependance on supply voltage?
 
@@ -101,7 +138,7 @@ Current inputs to OTA expected because of potential NPN $I_b$.
     \item $V_{BE}$ diode connected
 \end{itemize}
 
-\newpage % Like and Appendix
+\newpage % Appendixlike
 
 \section{PTAT Bias}
 
@@ -147,29 +184,45 @@ If we square both sides:
     I_{D1} = V_{GS1} - V_{GS2}  = (1 - \dfrac{1}{\sqrt{N}})^2 \dfrac{1}{R^2} \dfrac{1}{\mu_n C_{ox} \frac{W}{L}}
 \end{equation}
 
+\subsection{Start-up circuit}
 
-% If your proposal was accepted and you are submitting your final materials, please submit your work using the Open Journal System (OJS). Click \href{https://orcid.org/signin?client_id=APP-24WVJE2V6007Z3NV&response_type=code&scope=openid&redirect_uri=https:%2F%2Fjournals.library.columbia.edu%2Findex.php%2Fopenwork%2Fopenid%2FdoAuthentication%3Fprovider%3Dorcid}{here} to submit your materials. 
 
-% You will first be prompted to either register for an ORCID ID account (if you do not already have one) or authorize Columbia University Libraries Journals to access your existing ORCID record. For detailed instructions on how to register for an ORCID ID account and link your account to Columbia University Library, click \href{https://journals.library.columbia.edu/public/site/tutorials/OJS-orcid-tutorial.pdf}{here}. 
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.35\linewidth]{Figures/PTAT-bias-startup.pdf}
+	\caption{PTAT Bias Start-up Circuit TODO} % Proportional to absolute temperature Bias
+	\label{fig:ptat-bias-startup} 
+\end{figure}
 
-% An abstract (no references) is required for all submissions. The abstract should serve as a brief description of the work and should include the artist's aims, details about the creative process, and other information relevant to the work and how it dialogues with the issue's themes. This should be no more than 250 words. Please also include a list of 5-6 keywords. All identifying information about the authors must be removed. 
+% To check what it looks like?
 
-% Uploaded files (which includes article text, illustrations, and/or other media) cannot exceed 100MB. If upload limits are exceeded, a PDF may be uploaded that contains clearly labeled links to file hosting sites like Dropbox, Google Drive, etc. Make sure that all links are publicly accessible and will remain active during the peer review process. All identifying information about the authors must be removed from the titles and metadata of any uploaded files. In addition, files must be named descriptively (e.g. ``fig2\_SoundDiagram.png'' instead of ``image1.png'').
+\section{Bandgap Reference Design}
 
-% \subsection{Articles and Interviews}
 
-% \begin{itemize}[noitemsep]
-% \item Texts should be submitted as a Microsoft Word document with a .doc or .docx extension. 
-% \item Figures, illustrations, and media must be uploaded separately in addition to appearing within the text.
-% \end{itemize}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Figures/BGRV-design.pdf}
+	\caption{Bandgap Reference Voltage} % Proportional to absolute temperature Bias
+	\label{fig:BGRV-design} 
+\end{figure}
 
-% \subsection*{Artworks}
+
+\section{Operational Transconductance Amplfiers Design}
+
+
+\subsection{Comparator OTA}
+
+
+\subsection{Buffer OTA}
+
+% Jedinični bafer
+
+Expected input is around $1.3$ V. Transistor used for input differential pairs is npn BJT.
+
 
 % \begin{itemize}[noitemsep]
 % \item \uline{For Music:} The audio file for your submission in MP3 format.
-% \item \uline{For Poetry:} The text as a Microsoft Word document with a .doc or .docx extension.]
-% \item \uline{For Video:} The video file for your submission in MP4 format.
-% \item \uline{For Still Images:} The file for your submission in PNG, JPEG, SVG, or TIFF format, and of a suitable standard to reproduce, at least 300 dpi.
+
 % \end{itemize}
 
 % \subsection{Illustrations and Media}
@@ -296,6 +349,8 @@ If we square both sides:
 %     \item The author grants the Journal the authority to publish the article as an Open Access article distributed under the terms of \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{Creative Commons Attribution, NonCommercial, NoDerivatives license (CC BY-NC-ND).} 
 % \end{itemize}
 
-\printbibliography
+% \bibliography{references}
+
+% \printbibliography
 
 \end{document}
