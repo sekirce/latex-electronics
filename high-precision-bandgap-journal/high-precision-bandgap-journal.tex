@@ -113,7 +113,6 @@ Mathematical equation for $I_{C1}$.
     V_{BGR} - V_{BE1} = R_1 I_{C1}
 \end{equation}
 
-
 \subsection{Brokaw bandgap reference}
 
 \begin{figure}[ht!]
@@ -123,18 +122,15 @@ Mathematical equation for $I_{C1}$.
 	\label{fig:brokaw} % !?
 \end{figure}
 
-
 Current inputs to OTA expected because of potential NPN $I_b$.
 
 \subsection{Tsividis bandgap reference}
 
-
 % Dependance on supply voltage?
 
 \section{Errors PTAT or non-PTAT}
-
 \begin{itemize}
-    \item input DC opAmp offset
+    \item input DC opAmp offset, is very important paper used chopping to lower this dc offset.
     \item $V_{BE}$ diode connected
 \end{itemize}
 
@@ -185,11 +181,9 @@ If we square both sides:
 \end{equation}
 
 \subsection{Start-up circuit}
-
-
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=0.35\linewidth]{Figures/PTAT-bias-startup.pdf}
+	\includegraphics[width=0.7\linewidth]{Figures/PTAT-bias-startup.pdf}
 	\caption{PTAT Bias Start-up Circuit TODO} % Proportional to absolute temperature Bias
 	\label{fig:ptat-bias-startup} 
 \end{figure}
@@ -197,7 +191,6 @@ If we square both sides:
 % To check what it looks like?
 
 \section{Bandgap Reference Design}
-
 
 \begin{figure}[ht!]
 	\centering
@@ -209,15 +202,22 @@ If we square both sides:
 
 \section{Operational Transconductance Amplfiers Design}
 
+Need to check saturation region, also subthreshold region or not.
 
 \subsection{Comparator OTA}
 
+Input differential pair is PMOS.
 
 \subsection{Buffer OTA}
-
 % Jedinični bafer
-
 Expected input is around $1.3$ V. Transistor used for input differential pairs is npn BJT.
+
+
+\subsection{Testing stability}
+
+Identified three loops: feedback loop for comparator, buffer loop, and start-up circuit.
+
+
 
 
 % \begin{itemize}[noitemsep]
