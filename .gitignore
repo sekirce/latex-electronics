@@ -1,0 +1,16 @@
+test.py
+dummy.py
+*.pyc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+osnovi-fizike-poluprovodnika.synctex.gz
+*.toc
+*.aux
+*.bib
+*.log
+latex/Figures/state_machine.pdf
+latex/Figures/state_machine_w_reset.pdf
+*.bib
