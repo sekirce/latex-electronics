@@ -1,0 +1,55 @@
+Just some general technical background inputs from my side – related to the attached document.
+
+What we see from the attached slides, the gate oxide and the drain drift region have completely different physical limits.
+Even though they belong to the same transistor, the oxide and the drift region break for totally different reasons.
+
+1. VGS Stress (gate oxide screening) – targets gate oxide integrity
+- VGS stress = 1.2–1.4× nominal gate rating
+- Typical values: 6–8 V for HV MOS, 4–5 V for IO, 2.2–3 V for thin-oxide
+- Gate oxide is a vertical dielectric — extremely field‑sensitive.
+
+Failure modes detected:
+- Process oxide defects
+- Plasma charging damage
+- Oxide thinning, pinholes
+- Gate leakage
+- Hot-carrier injection near gate edge
+
+2. VDS Stress – targets drain junction robustness, drift region quality and avalanche-related weaknesses.
+
+In a modern BCD LDMOS or DMOS, the drain-to-source voltage (VDS) is tolerated because of:
+
+a) Extended drift region
+A long, lightly doped region spreads the electric field laterally away from the channel.
+
+b) Buried layer (BL) and deep‑N well
+These provide:
+- vertical electric field spreading
+- improved punch‑through immunity
+- higher breakdown margin
+
+c) Deep trench isolation (DTI)
+DTI separates device edges – prevents premature surface breakdown.
+
+d) Field plates
+Overlapping metal layers shape electric fields to reduce peaks near the drain.
+
+e) LOCOS/STI field oxides
+Allow larger depletion regions. All these features together support:
+- 20 V
+- 40 V
+- 60 V
+- 80 V
+- sometimes 100–120 V BVdss (B – comes from Break) ratings
+
+These regions can safely take very high VDS stress even while the gate oxide cannot.
+Thus, in the PDK:
+- VDS screen may be 1.3–1.6× BVdss (e.g., 40V device stressed at 55–60V)
+
+Failure modes detected:
+- Incorrect drift doping
+- Field plate misalignment
+- Buried‑layer defects
+- STI/DTI leakage
+- Microplasma breakdown
+- Punch‑through issues
